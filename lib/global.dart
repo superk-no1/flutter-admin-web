@@ -1,4 +1,5 @@
 import 'package:admin_web/services/config.dart';
+import 'package:admin_web/services/http.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +11,8 @@ class Global {
     WidgetsFlutterBinding.ensureInitialized();
 
     Get.put<ConfigService>(ConfigService());
+    Get.put<HttpService>(HttpService());
+
     await StorageHelper.instance.init();
   }
 }
