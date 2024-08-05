@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: Constants.appName,
+      title: Constants.webName,
 
       /// 样式
       theme: AppTheme.light,
