@@ -1,3 +1,4 @@
+import 'package:admin_web/pages/about/about_view.dart';
 import 'package:admin_web/pages/order/order_view.dart';
 import 'package:admin_web/pages/product/product_category/product_category_view.dart';
 import 'package:admin_web/pages/product/product_list/product_list_view.dart';
@@ -15,6 +16,7 @@ class Routes {
   static const String productList = '/productList';
   static const String productCategory = '/productCategory';
   static const String order = '/order';
+  static const String about = '/about';
 
   static final List<GetPage> getPages = [
     GetPage(name: home, page: () => const HomePage()),
@@ -37,6 +39,11 @@ class Routes {
     GetPage(
         name: order,
         page: () => const OrderPage(),
+        maintainState: true,
+        transition: Transition.noTransition),
+    GetPage(
+        name: about,
+        page: () => const AboutPage(),
         maintainState: true,
         transition: Transition.noTransition),
   ];
