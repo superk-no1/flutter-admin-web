@@ -37,6 +37,11 @@ class AdminMenuBar extends SideBar {
         route: Routes.order,
       ),
       const AdminMenuItem(
+        icon: Icons.android,
+        title: 'AI助理',
+        route: Routes.aiChat,
+      ),
+      const AdminMenuItem(
         icon: Icons.account_circle,
         title: '关于作者',
         route: Routes.about,
