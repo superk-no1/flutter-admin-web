@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../common/constants.dart';
 import '../../../widget/admin_menu_bar.dart';
+import '../../../widget/crud_table/crud_table_view.dart';
 import 'product_list_logic.dart';
 
 class ProductListPage extends StatefulWidget {
@@ -30,6 +31,6 @@ class _ProductListPageState extends State<ProductListPage> {
   }
 
   Widget _buildMain() {
-    return Center(child: Text('商品列表'));
+    return const CrudTableView();
   }
 }

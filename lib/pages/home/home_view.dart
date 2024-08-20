@@ -30,6 +30,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildMain() {
-    return Center(child: Text('home'));
+    return Container();
   }
 }
