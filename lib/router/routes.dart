@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../pages/dash_board/dash_board_view.dart';
 import '../widgets/admin_root.dart';
+import '../widgets/transition_page.dart';
 
 class Routes {
   static const String login = '/login';
@@ -23,18 +24,24 @@ class Routes {
           routes: [
             GoRoute(
                 path: dashboard,
-                builder: (context, state) {
-                  return const DashBoardPage();
+                pageBuilder: (context, state) {
+                  return FadeTransitionPage(
+                    child: const DashBoardPage(),
+                  );
                 }),
             GoRoute(
                 path: goodsList,
-                builder: (context, state) {
-                  return const GoodsListPage();
+                pageBuilder: (context, state) {
+                  return FadeTransitionPage(
+                    child: const GoodsListPage(),
+                  );
                 }),
             GoRoute(
                 path: goodsCategory,
-                builder: (context, state) {
-                  return const GoodsCategoryPage();
+                pageBuilder: (context, state) {
+                  return SlideTransitionPage(
+                    child: const GoodsCategoryPage(),
+                  );
                 }),
           ],
         ),
