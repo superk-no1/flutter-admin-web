@@ -3,9 +3,7 @@ import 'package:admin_web/common/styles/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:get/get.dart';
-
-import 'routers/names.dart';
+import 'router/routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,17 +24,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: Constants.appName,
+    return MaterialApp.router(
+      title: Constants.webName,
 
       /// 样式
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
 
-      /// 路由
-      initialRoute: Routes.home,
-      getPages: Routes.getPages,
-      navigatorObservers: [Routes.observer],
+      /// 路由配置
+      routerDelegate: Routes.router.routerDelegate,
+      routeInformationParser: Routes.router.routeInformationParser,
+      routeInformationProvider: Routes.router.routeInformationProvider,
 
       /// debug banner是否显示
       debugShowCheckedModeBanner: false,
