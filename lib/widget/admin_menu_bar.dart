@@ -23,18 +23,17 @@ class AdminMenuBar extends SideBar {
         children: [
           AdminMenuItem(
             title: '商品列表',
-            route: Routes.productList,
+            route: '/product/productList',
           ),
           AdminMenuItem(
             title: '商品分类',
-            route: Routes.productCategory,
+            route: '/product/productCategory',
           ),
         ],
       ),
       const AdminMenuItem(
         icon: Icons.settings,
         title: '订单管理',
-        route: Routes.order,
       ),
       const AdminMenuItem(
         icon: Icons.android,
