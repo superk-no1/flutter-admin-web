@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'dash_board_logic.dart';
+import 'dashboard_logic.dart';
 
 class DashBoardPage extends StatefulWidget {
   const DashBoardPage({super.key});

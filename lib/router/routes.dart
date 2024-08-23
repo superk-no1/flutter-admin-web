@@ -1,11 +1,11 @@
 import 'package:admin_web/pages/goods/goods_category/goods_category_view.dart';
 import 'package:admin_web/pages/goods/goods_list/goods_list_view.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../pages/dash_board/dash_board_view.dart';
-import '../widgets/admin_root.dart';
-import '../widgets/transition_page.dart';
+import '../pages/dashboard/dashboard_view.dart';
+import '../widgets/base/root_scaffold.dart';
+import '../widgets/base/transition_page.dart';
+import 'observers.dart';
 
 class Routes {
   static const String login = '/login';
@@ -39,7 +39,7 @@ class Routes {
             GoRoute(
                 path: goodsCategory,
                 pageBuilder: (context, state) {
-                  return SlideTransitionPage(
+                  return FadeTransitionPage(
                     child: const GoodsCategoryPage(),
                   );
                 }),
@@ -47,5 +47,5 @@ class Routes {
         ),
       ],
       initialLocation: dashboard,
-      observers: [RouteObserver()]);
+      observers: [GoRouteObserver()]);
 }

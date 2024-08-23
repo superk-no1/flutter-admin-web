@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:go_router/go_router.dart';
 
-import '../common/constants.dart';
-import '../router/routes.dart';
+import '../../router/routes.dart';
 
 class RootScaffold extends StatelessWidget {
   final Widget child;
@@ -14,9 +13,6 @@ class RootScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return AdminScaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text(Constants.webName),
-      ),
       sideBar: SideBar(
         items: const [
           AdminMenuItem(icon: Icons.home, title: '主页', route: Routes.dashboard),
@@ -31,7 +27,7 @@ class RootScaffold extends StatelessWidget {
         selectedRoute: Routes.dashboard,
         onSelected: (adminMenuItem) {
           if (adminMenuItem.route != null) {
-            GoRouter.of(context).go(adminMenuItem.route!);
+            context.go(adminMenuItem.route!);
           }
         },
       ),
