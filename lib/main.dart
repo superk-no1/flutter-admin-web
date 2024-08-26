@@ -32,9 +32,9 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.dark,
 
       /// 路由配置
-      routerDelegate: Routes.router.routerDelegate,
-      routeInformationParser: Routes.router.routeInformationParser,
-      routeInformationProvider: Routes.router.routeInformationProvider,
+      routerDelegate: RouteManager.router.routerDelegate,
+      routeInformationParser: RouteManager.router.routeInformationParser,
+      routeInformationProvider: RouteManager.router.routeInformationProvider,
 
       /// debug banner是否显示
       debugShowCheckedModeBanner: false,
