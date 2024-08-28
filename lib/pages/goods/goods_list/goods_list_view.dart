@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../widgets/crud_table/crud_table_view.dart';
 import 'goods_list_logic.dart';
 
 class GoodsListPage extends StatefulWidget {
@@ -17,7 +18,7 @@ class _GoodsListPageState extends State<GoodsListPage> {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('goodsList'),
+      child: CrudTableView(),
     );
   }
 }

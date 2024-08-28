@@ -70,4 +70,13 @@ class RouteManager {
     }
     return tagList.join(' > ');
   }
+
+  static void showNormalDialog({
+    required Widget Function(BuildContext context) builder,
+  }) {
+    showDialog(
+      context: navigatorKey.currentContext!,
+      builder: builder,
+    );
+  }
 }
