@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../models/table_item_model.dart';
 import 'crud_table_logic.dart';
 
 class CrudTableView extends StatefulWidget {
@@ -47,9 +46,7 @@ class _CrudTableViewState extends State<CrudTableView> {
           ),
           const SizedBox(width: 10),
           ElevatedButton(
-            onPressed: () => logic.showDeleteDialog(
-              TableItemModel(id: 0, name: '', description: ''),
-            ),
+            onPressed: () => logic.showDeleteSelectedDialog(),
             child: const Text('删除选中'),
           ),
           const SizedBox(width: 10),
@@ -61,6 +58,8 @@ class _CrudTableViewState extends State<CrudTableView> {
                   state.isAllSelected.value ? '取消全选' : '全选',
                 )),
           ),
+          const Spacer(),
+          Text('选中数量: ${state.selectedItems.length}'),
         ],
       ),
     );

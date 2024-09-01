@@ -28,7 +28,9 @@ class CrudTableLogic extends GetxController {
   }
 
   void _deleteSelectedItems() {
-    //todo 补充删除选中的逻辑
+    state.items.removeWhere((e) => state.selectedItems.contains(e));
+    state.selectedItems.clear();
+    state.isAllSelected.value = false;
   }
 
   void toggleSelection(TableItemModel item, bool selected) {
@@ -145,7 +147,7 @@ class CrudTableLogic extends GetxController {
     );
   }
 
-  void showDeleteSelectedDialog(TableItemModel item) {
+  void showDeleteSelectedDialog() {
     RouteManager.showNormalDialog(
       builder: (BuildContext context) {
         return AlertDialog(
