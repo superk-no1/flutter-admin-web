@@ -20,6 +20,7 @@ class _CrudTableViewState extends State<CrudTableView> {
         children: [
           _buildTableTitle(),
           _buildTableContent(),
+          _buildTableEnd(),
         ],
       );
     });
@@ -85,7 +86,7 @@ class _CrudTableViewState extends State<CrudTableView> {
           const DataColumn(label: Text('描述')),
           const DataColumn(label: Text('操作')),
         ],
-        rows: state.items.map((item) {
+        rows: state.currentPageItems.map((item) {
           return DataRow(
             cells: [
               DataCell(
@@ -115,6 +116,58 @@ class _CrudTableViewState extends State<CrudTableView> {
             ],
           );
         }).toList(),
+      ),
+    );
+  }
+
+  Widget _buildTableEnd() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+              '共计${state.items.length}条，当前${state.currentStart + 1}-${state.currentEnd}条'),
+          const SizedBox(width: 10),
+          ElevatedButton(
+            onPressed: () => logic.changePage(state.currentPage.value - 1),
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Colors.blue,
+            ),
+            child: const Icon(Icons.chevron_left),
+          ),
+          const SizedBox(width: 10),
+          Text('第 ${state.currentPage.value} 页'),
+          const SizedBox(width: 10),
+          ElevatedButton(
+            onPressed: () => logic.changePage(state.currentPage.value + 1),
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Colors.blue,
+            ),
+            child: const Icon(Icons.chevron_right),
+          ),
+          const SizedBox(width: 10),
+          Obx(() => DropdownButton<int>(
+                value: state.itemsPerPage.value,
+                icon: const Icon(Icons.arrow_drop_down_sharp),
+                iconSize: 24,
+                elevation: 16,
+                style: const TextStyle(color: Colors.deepPurple),
+                onChanged: (int? newValue) {
+                  state.itemsPerPage.value = newValue ?? 0;
+                  state.currentPage.value = 1;
+                  logic.updateCurrentPageItems();
+                },
+                items: <int>[3, 5, 6].map<DropdownMenuItem<int>>((int value) {
+                  return DropdownMenuItem<int>(
+                    value: value,
+                    child: Text(state.currentPerPageStr(value)),
+                  );
+                }).toList(),
+              )),
+        ],
       ),
     );
   }

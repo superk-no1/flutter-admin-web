@@ -172,4 +172,16 @@ class CrudTableLogic extends GetxController {
       },
     );
   }
+
+  void updateCurrentPageItems() {
+    state.currentPageItems.value =
+        state.items.sublist(state.currentStart, state.currentEnd);
+  }
+
+  void changePage(int page) {
+    if (page > 0 && page <= state.totalPages) {
+      state.currentPage.value = page;
+      updateCurrentPageItems();
+    }
+  }
 }
