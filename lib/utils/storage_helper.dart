@@ -16,6 +16,10 @@ class StorageHelper {
     _pref = await SharedPreferences.getInstance();
   }
 
+  Future<bool> setInt(String key, int value) async {
+    return await _pref.setInt(key, value);
+  }
+
   Future<bool> setStr(String key, String value) async {
     return await _pref.setString(key, value);
   }
@@ -26,6 +30,10 @@ class StorageHelper {
 
   Future<bool> setList(String key, List<String> value) async {
     return await _pref.setStringList(key, value);
+  }
+
+  int getInt(String key) {
+    return _pref.getInt(key) ?? 0;
   }
 
   String getStr(String key) {

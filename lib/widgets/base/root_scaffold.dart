@@ -2,6 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart' as material;
 
 import '../../router/router_manager.dart';
+import '../../utils/storage_helper.dart';
 
 class RootScaffold extends StatefulWidget {
   final Widget child;
@@ -13,7 +14,7 @@ class RootScaffold extends StatefulWidget {
 }
 
 class _RootScaffoldState extends State<RootScaffold> {
-  int currentIndex = 0;
+  int currentIndex = StorageHelper.instance.getInt('restore_index');
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +26,7 @@ class _RootScaffoldState extends State<RootScaffold> {
             setState(() {
               currentIndex = index;
             });
+            StorageHelper.instance.setInt('restore_index', index);
             RouterManager.goByIndex(index);
           }),
       paneBodyBuilder: (item, _) {

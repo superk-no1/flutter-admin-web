@@ -1,7 +1,7 @@
 import 'package:admin_web/common/constants.dart';
 import 'package:admin_web/common/styles/themes.dart';
+import 'package:admin_web/global.dart';
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter/services.dart';
 
 import 'router/router_manager.dart';
 
@@ -11,12 +11,8 @@ void main() {
 }
 
 void launchApp() {
-  initData();
+  Global.init();
   runApp(const MyApp());
-}
-
-void initData() {
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 }
 
 class MyApp extends StatelessWidget {

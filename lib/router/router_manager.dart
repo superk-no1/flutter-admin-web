@@ -1,6 +1,7 @@
 import 'package:admin_web/pages/goods/goods_category/goods_category_view.dart';
 import 'package:admin_web/pages/goods/goods_list/goods_list_view.dart';
 import 'package:admin_web/pages/not_found/not_found_view.dart';
+import 'package:admin_web/utils/storage_helper.dart';
 import 'package:fluent_ui/fluent_ui.dart' as fluent;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -8,13 +9,19 @@ import 'package:go_router/go_router.dart';
 import '../pages/dashboard/dashboard_view.dart';
 import '../widgets/base/root_scaffold.dart';
 import '../widgets/base/transition_page.dart';
-import 'observers.dart';
+import 'router_observers.dart';
 
 class RouterManager {
   static const String dashboard = '/dashboard';
   static const String goodsList = '/goods/goodsList';
   static const String goodsCategory = '/goods/goodsCategory';
   static const String notFound = '/404';
+
+  static String get restoreRoute {
+    var url = StorageHelper.instance.getStr('restore_route');
+    if (url.isNotEmpty) return url;
+    return dashboard;
+  }
 
   static final GlobalKey<NavigatorState> navigatorKey =
       GlobalKey<NavigatorState>();
@@ -59,7 +66,7 @@ class RouterManager {
           ],
         ),
       ],
-      initialLocation: dashboard,
+      initialLocation: restoreRoute,
       navigatorKey: navigatorKey,
       observers: [GoRouteObserver()]);
 
@@ -91,6 +98,7 @@ class RouterManager {
       final children = item.children;
       if (children != null) {
         return fluent.PaneItemExpander(
+            initiallyExpanded: true,
             icon: Icon(item.icon),
             title: Text(item.title),
             body: const SizedBox.shrink(),
@@ -148,6 +156,8 @@ class RouterManager {
   static void goByIndex(int index) {
     var route = _findRoute(_menuList, index);
     if (route != null) {
+      StorageHelper.instance.setStr('restore_route',
+          router.routeInformationProvider.value.uri.toString());
       router.go(route);
     }
   }
