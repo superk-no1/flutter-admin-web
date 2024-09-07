@@ -3,7 +3,7 @@ import 'package:admin_web/common/styles/themes.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 
-import 'router/routes.dart';
+import 'router/router_manager.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,4 +1,4 @@
-import 'package:admin_web/router/routes.dart';
+import 'package:admin_web/router/router_manager.dart';
 import 'package:admin_web/widgets/crud_table/crud_table_state.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';

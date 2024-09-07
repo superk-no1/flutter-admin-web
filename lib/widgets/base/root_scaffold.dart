@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart' as material;
 
-import '../../router/routes.dart';
+import '../../router/router_manager.dart';
 
 class RootScaffold extends StatefulWidget {
   final Widget child;
