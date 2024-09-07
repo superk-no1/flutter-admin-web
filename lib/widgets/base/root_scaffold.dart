@@ -1,49 +1,44 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_admin_scaffold/admin_scaffold.dart';
+import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart' as material;
 
 import '../../router/routes.dart';
 
-class RootScaffold extends StatelessWidget {
+class RootScaffold extends StatefulWidget {
   final Widget child;
 
   const RootScaffold({super.key, required this.child});
 
   @override
+  State<RootScaffold> createState() => _RootScaffoldState();
+}
+
+class _RootScaffoldState extends State<RootScaffold> {
+  int currentIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
-    return AdminScaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text('Super Admin'),
-      ),
-      sideBar: SideBar(
-        items: const [
-          AdminMenuItem(
-              icon: Icons.home, title: '主页', route: RouteManager.dashboard),
-          AdminMenuItem(icon: Icons.shop, title: '商品管理', children: [
-            AdminMenuItem(
-              title: '商品列表',
-              route: RouteManager.goodsList,
-            ),
-            AdminMenuItem(title: '商品分类', route: RouteManager.goodsCategory),
-          ]),
-        ],
-        selectedRoute: RouteManager.dashboard,
-        onSelected: (adminMenuItem) {
-          if (adminMenuItem.route != null) {
-            RouteManager.router.go(adminMenuItem.route!);
-          }
-        },
-      ),
-      body: Column(
-        children: [_buildTopBar(), child],
-      ),
+    return NavigationView(
+      pane: NavigationPane(
+          items: RouterManager.adaptMenuItems,
+          selected: currentIndex,
+          onChanged: (int index) {
+            setState(() {
+              currentIndex = index;
+            });
+            RouterManager.goByIndex(index);
+          }),
+      paneBodyBuilder: (item, _) {
+        return Column(
+          children: [_buildContentTopBar(), Expanded(child: widget.child)],
+        );
+      },
     );
   }
 
-  Widget _buildTopBar() {
+  Widget _buildContentTopBar() {
     return Container(
-      height: 60,
-      color: Colors.black12,
+      height: 40,
+      color: material.Colors.black12,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [_buildBreadcrumb()],
@@ -55,7 +50,7 @@ class RootScaffold extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Text(
-        RouteManager.currentBreadcrumbStr,
+        RouterManager.currentBreadcrumbStr,
         style: const TextStyle(color: Colors.grey),
       ),
     );

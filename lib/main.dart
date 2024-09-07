@@ -1,6 +1,6 @@
 import 'package:admin_web/common/constants.dart';
 import 'package:admin_web/common/styles/themes.dart';
-import 'package:flutter/material.dart';
+import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/services.dart';
 
 import 'router/routes.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return FluentApp.router(
       title: Constants.webName,
 
       /// 样式
@@ -32,9 +32,9 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.dark,
 
       /// 路由配置
-      routerDelegate: RouteManager.router.routerDelegate,
-      routeInformationParser: RouteManager.router.routeInformationParser,
-      routeInformationProvider: RouteManager.router.routeInformationProvider,
+      routerDelegate: RouterManager.router.routerDelegate,
+      routeInformationParser: RouterManager.router.routeInformationParser,
+      routeInformationProvider: RouterManager.router.routeInformationProvider,
 
       /// debug banner是否显示
       debugShowCheckedModeBanner: false,

@@ -53,7 +53,7 @@ class CrudTableLogic extends GetxController {
   }
 
   void showAddDialog() {
-    RouteManager.showNormalDialog(
+    RouterManager.showNormalDialog(
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('添加商品'),
@@ -90,7 +90,7 @@ class CrudTableLogic extends GetxController {
     state.nameController.text = item.name;
     state.descriptionController.text = item.description;
 
-    RouteManager.showNormalDialog(builder: (BuildContext context) {
+    RouterManager.showNormalDialog(builder: (BuildContext context) {
       return AlertDialog(
         title: const Text('编辑商品'),
         content: Column(
@@ -122,7 +122,7 @@ class CrudTableLogic extends GetxController {
   }
 
   void showDeleteDialog(TableItemModel item) {
-    RouteManager.showNormalDialog(
+    RouterManager.showNormalDialog(
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('删除商品'),
@@ -148,7 +148,7 @@ class CrudTableLogic extends GetxController {
   }
 
   void showDeleteSelectedDialog() {
-    RouteManager.showNormalDialog(
+    RouterManager.showNormalDialog(
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('删除选中商品'),

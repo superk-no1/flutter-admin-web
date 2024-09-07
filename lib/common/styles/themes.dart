@@ -1,17 +1,8 @@
-import 'package:flutter/material.dart';
-
-import 'color_schemes.g.dart';
+import 'package:fluent_ui/fluent_ui.dart';
 
 class AppTheme {
-  static ThemeData light = ThemeData(
-    colorScheme: lightColorScheme,
-    fontFamily: 'Montserrat',
-    useMaterial3: false,
-  );
+  //todo 补充样式
+  static FluentThemeData light = FluentThemeData();
 
-  static ThemeData dark = ThemeData(
-    colorScheme: darkColorScheme,
-    fontFamily: 'Montserrat',
-    useMaterial3: false,
-  );
+  static FluentThemeData dark = FluentThemeData();
 }

@@ -17,8 +17,8 @@ class _GoodsListPageState extends State<GoodsListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: CrudTableView(),
+    return const Scaffold(
+      body: CrudTableView(),
     );
   }
 }
