@@ -13,6 +13,7 @@ class CrudTableLogic extends GetxController {
       name: name,
       description: description,
     ));
+    updateCurrentPageItems();
   }
 
   void _editItem(TableItemModel item, String name, String description) {
@@ -25,12 +26,16 @@ class CrudTableLogic extends GetxController {
     state.items.remove(item);
     state.selectedItems.remove(item);
     state.isAllSelected.value = false;
+    state.items.refresh();
+    updateCurrentPageItems();
   }
 
   void _deleteSelectedItems() {
     state.items.removeWhere((e) => state.selectedItems.contains(e));
     state.selectedItems.clear();
     state.isAllSelected.value = false;
+    state.items.refresh();
+    updateCurrentPageItems();
   }
 
   void toggleSelection(TableItemModel item, bool selected) {
@@ -45,7 +50,8 @@ class CrudTableLogic extends GetxController {
 
   void toggleSelectAll(bool selectAll) {
     if (selectAll) {
-      state.selectedItems.addAll(state.items);
+      state.selectedItems
+          .addAll(state.items.sublist(state.currentStart, state.currentEnd));
     } else {
       state.selectedItems.clear();
     }
